@@ -442,7 +442,7 @@
 		
 		Bounce : {
 			easeIn :  function (t, b, c, d) {
-				return c - bounceOut(d - t, 0, c, d) + b;
+				return c - Easing.Bounce.easeOut(d - t, 0, c, d) + b;
 			},
 			easeOut :  function (t, b, c, d) {
 				if ((t /= d) < (1 / 2.75)) return c * (7.5625 * t * t) + b;
@@ -451,8 +451,8 @@
 				return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
 			},
 			easeInOut :  function (t, b, c, d) {
-				if (t < d / 2) return bounceIn(t * 2, 0, c, d) * .5 + b;
-				return bounceOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
+				if (t < d / 2) return Easing.Bounce.easeIn(t * 2, 0, c, d) * .5 + b;
+				return Easing.Bounce.easeOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
 			}
 		},
 		
