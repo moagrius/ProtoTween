@@ -292,11 +292,13 @@
 		this._offset(this._duration);
 	};
 	ProtoTween.prototype.updateDuration = function(duration){
-		var progress = duration / this._duration;
-		this._duration = duration;
-		if (this.isPlaying()) {
-			this._offset(this._ellapsed() * progress);
-		}
+		if(isFinite(duration)){
+			var progress = this._playhead / this._duration;
+			this._duration = duration;
+			if (this.isPlaying()) {
+				this._offset(duration * progress);
+			};
+		};
 	};
 	ProtoTween.prototype.updateEasing = function(easing){
 		if(typeof easing == 'function' && isFinite(easing(1, 0, 1, 1))){
